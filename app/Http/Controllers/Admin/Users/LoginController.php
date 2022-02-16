@@ -37,7 +37,7 @@ class LoginController extends Controller
             'level' => 'user',
         ], $request->input('remember'))) {
 
-            return redirect()->route('/');
+            return redirect()->route('home');
         }
 
         Session::flash('error', 'Email hoặc Password không đúng');
