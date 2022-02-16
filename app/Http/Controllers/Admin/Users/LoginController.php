@@ -31,6 +31,14 @@ class LoginController extends Controller
 
             return redirect()->route('admin');
         }
+        if (Auth::attempt([
+            'email' => $request->input('email'),
+            'password' => $request->input('password'),
+            'level' => 'user',
+        ], $request->input('remember'))) {
+
+            return redirect()->route('/');
+        }
 
         Session::flash('error', 'Email hoặc Password không đúng');
         return redirect()->back();
